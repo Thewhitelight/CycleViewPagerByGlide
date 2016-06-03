@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), urls.get(index), Toast.LENGTH_SHORT).show();
                         }
                     });
-            indicator.startAutoScroll(5000);
             indicator.addSlider(sliderView);
         }
+        indicator.startAutoScroll(5000);
         indicator.setIndicatorPosition();
     }
 }
