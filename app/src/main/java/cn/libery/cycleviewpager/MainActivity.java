@@ -2,6 +2,7 @@ package cn.libery.cycleviewpager;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -42,6 +43,6 @@ public class MainActivity extends AppCompatActivity {
             indicator.addSlider(sliderView);
         }
         indicator.startAutoScroll(5000);
-        indicator.setIndicatorPosition();
+        indicator.setIndicatorPosition(Gravity.LEFT | Gravity.BOTTOM);
     }
 }

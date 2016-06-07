@@ -9,10 +9,12 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import java.lang.ref.WeakReference;
 
+import cn.lightsky.infiniteindicator.indicator.CircleIndicator;
 import cn.lightsky.infiniteindicator.indicator.PageIndicator;
 import cn.lightsky.infiniteindicator.indicator.RecycleAdapter;
 import cn.lightsky.infiniteindicator.jakewharton.salvage.RecyclingPagerAdapter;
@@ -323,7 +325,8 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements Recycling
     }
 
     public enum IndicatorPosition {
-        Center_Bottom("Center_Bottom", R.id.default_center_bottom_indicator);
+
+        Right_Bottom("Right_Bottom", R.id.default_center_bottom_indicator);
 
         private final String name;
         private final int id;
@@ -342,9 +345,24 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements Recycling
         }
     }
 
+    CircleIndicator pagerIndicator;
+
     public void setIndicatorPosition() {
-        PageIndicator pagerIndicator = (PageIndicator) findViewById(IndicatorPosition.Center_Bottom.getResourceId());
-        setCustomIndicator(pagerIndicator);
+        if (pagerIndicator == null) {
+            pagerIndicator = (CircleIndicator) findViewById(IndicatorPosition.Right_Bottom.getResourceId());
+            setCustomIndicator(pagerIndicator);
+        }
+    }
+
+    public void setIndicatorPosition(int position) {
+        if (pagerIndicator == null) {
+            pagerIndicator = (CircleIndicator) findViewById(IndicatorPosition.Right_Bottom.getResourceId());
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,
+                    FrameLayout.LayoutParams.WRAP_CONTENT);
+            params.gravity = position;
+            pagerIndicator.setLayoutParams(params);
+            setCustomIndicator(pagerIndicator);
+        }
     }
 
     public void setCustomIndicator(PageIndicator indicator) {
