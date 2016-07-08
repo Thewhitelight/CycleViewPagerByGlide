@@ -1,3 +1,9 @@
 # CycleViewPagerByGlide
 banner by glide
-循环Banner使用Glide加载
+
+position : Gravity.TOP/Gravity.RIGHT/Gravity.BOTTOM/Gravity.LEFT
+setIndicatorPosition(int position)
+
+
+### Screenshot
+![](https://github.com/Thewhitelight/CycleViewPagerByGlide/tree/master/gif.gif)

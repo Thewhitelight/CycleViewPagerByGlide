@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        pics = Arrays.asList("http://cjwdata.superwan.cn/AABWVCcAmQc6Q9Ew.jpg", "http://cjwdata.superwan" +
-                ".cn/AABW%2FOSo9oVlGXKm.jpg", "http://cjwdata.superwan.cn/AABXSApBcuUhkEzX.jpg", "http://cjwdata" +
-                ".superwan.cn/AABWrwl3rfMfdu0X.jpg", "sss");
+        pics = Arrays.asList("http://img.61gequ.com/allimg/2011-4/201142614314278502.jpg", "http://pic14.nipic" +
+                ".com/20110527/2531170_101932834000_2.jpg", "http://pic1.nipic.com/2008-12-25/2008122510134038_2.jpg",
+                "http://img1.3lian.com/2015/w7/98/d/21.jpg", "sss");
         initCircleViewPager(pics, Gravity.TOP | Gravity.RIGHT);
     }
 
