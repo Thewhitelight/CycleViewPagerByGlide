@@ -6,4 +6,4 @@ setIndicatorPosition(int position)
 
 
 ### Screenshot
-![](https://github.com/Thewhitelight/CycleViewPagerByGlide/tree/master/gif.gif)
+![](https://github.com/Thewhitelight/CycleViewPagerByGlide/blob/master/gif.gif)
