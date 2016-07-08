@@ -95,6 +95,10 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements Recycling
         mRecycleAdapter.removeAllSliders();
     }
 
+    public void removeSliderAt(int position) {
+        mRecycleAdapter.removeSliderAt(position);
+    }
+
     /**
      * according page count and is loop decide the first page to display
      */

@@ -13,36 +13,41 @@ import cn.lightsky.infiniteindicator.slideview.BaseSliderView;
 import cn.lightsky.infiniteindicator.slideview.DefaultSliderView;
 
 public class MainActivity extends AppCompatActivity {
+    List<String> pics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        List<String> pics = Arrays.asList("http://cjwdata.superwan.cn/AABWVCcAmQc6Q9Ew.jpg", "http://cjwdata.superwan" +
+
+        pics = Arrays.asList("http://cjwdata.superwan.cn/AABWVCcAmQc6Q9Ew.jpg", "http://cjwdata.superwan" +
                 ".cn/AABW%2FOSo9oVlGXKm.jpg", "http://cjwdata.superwan.cn/AABXSApBcuUhkEzX.jpg", "http://cjwdata" +
                 ".superwan.cn/AABWrwl3rfMfdu0X.jpg", "sss");
-        initCircleViewPager(pics);
+        initCircleViewPager(pics, Gravity.TOP | Gravity.RIGHT);
     }
 
-    private void initCircleViewPager(final List<String> urls) {
+    private void initCircleViewPager(final List<String> urls, int position) {
         InfiniteIndicatorLayout indicator = (InfiniteIndicatorLayout) findViewById(R.id.indicator_default_circle);
-        for (int i = 0; i < urls.size(); i++) {
-            final String url = urls.get(i);
-            final int index = i;
-            DefaultSliderView sliderView = new DefaultSliderView(getApplicationContext());
-            sliderView.image(url)
-                    .setScaleType(BaseSliderView.ScaleType.FitCenter)
-                    .showImageResForEmpty(R.color.colorPrimary)
-                    .showImageResForError(R.color.colorPrimaryDark)
-                    .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
-                        @Override
-                        public void onSliderClick(BaseSliderView slider) {
-                            Toast.makeText(getApplicationContext(), urls.get(index), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-            indicator.addSlider(sliderView);
+        if (indicator != null) {
+            for (int i = 0; i < urls.size(); i++) {
+                final String url = urls.get(i);
+                final int index = i;
+                DefaultSliderView sliderView = new DefaultSliderView(getApplicationContext());
+                sliderView.image(url)
+                        .setScaleType(BaseSliderView.ScaleType.FitCenter)
+                        .showImageResForEmpty(R.color.colorPrimary)
+                        .showImageResForError(R.color.colorPrimaryDark)
+                        .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                            @Override
+                            public void onSliderClick(BaseSliderView slider) {
+                                Toast.makeText(getApplicationContext(), urls.get(index), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                indicator.addSlider(sliderView);
+            }
+            indicator.startAutoScroll(5000);
+            indicator.setIndicatorPosition(position);
         }
-        indicator.startAutoScroll(5000);
-        indicator.setIndicatorPosition(Gravity.LEFT | Gravity.BOTTOM);
     }
+
 }

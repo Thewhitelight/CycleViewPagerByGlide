@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CycleViewPagerByGlide.iml" filepath="$PROJECT_DIR$/CycleViewPagerByGlide.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CycleViewPagerByGlide.iml" filepath="$PROJECT_DIR$/CycleViewPagerByGlide.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library_circle_viewpager/library_circle_viewpager.iml" filepath="$PROJECT_DIR$/library_circle_viewpager/library_circle_viewpager.iml" />
       <module fileurl="file://$PROJECT_DIR$/library_circle_viewpager/library_circle_viewpager.iml" filepath="$PROJECT_DIR$/library_circle_viewpager/library_circle_viewpager.iml" />
     </modules>
   </component>
