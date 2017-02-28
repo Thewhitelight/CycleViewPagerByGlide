@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import cn.lightsky.infiniteindicator.InfiniteIndicatorLayout;
-import cn.lightsky.infiniteindicator.indicator.CircleIndicator;
 import cn.lightsky.infiniteindicator.slideview.BaseSliderView;
 import cn.lightsky.infiniteindicator.slideview.DefaultSliderView;
 
