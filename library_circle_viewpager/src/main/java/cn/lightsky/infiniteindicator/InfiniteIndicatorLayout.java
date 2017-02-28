@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 
 import java.lang.ref.WeakReference;
 
-import cn.lightsky.infiniteindicator.indicator.CircleIndicator;
+import cn.lightsky.infiniteindicator.indicator.Circle2Indicator;
 import cn.lightsky.infiniteindicator.indicator.PageIndicator;
 import cn.lightsky.infiniteindicator.indicator.RecycleAdapter;
 import cn.lightsky.infiniteindicator.jakewharton.salvage.RecyclingPagerAdapter;
@@ -31,7 +31,7 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements Recycling
     private ViewPager mViewPager;
     private RecycleAdapter mRecycleAdapter;
 
-    public static final int DEFAULT_INTERVAL = 2000;
+    public static final int DEFAULT_INTERVAL = 7000;
     /**
      * do nothing when sliding at the last or first item *
      */
@@ -349,18 +349,18 @@ public class InfiniteIndicatorLayout extends RelativeLayout implements Recycling
         }
     }
 
-    CircleIndicator pagerIndicator;
+    Circle2Indicator pagerIndicator;
 
     public void setIndicatorPosition() {
         if (pagerIndicator == null) {
-            pagerIndicator = (CircleIndicator) findViewById(IndicatorPosition.Right_Bottom.getResourceId());
+            pagerIndicator = (Circle2Indicator) findViewById(IndicatorPosition.Right_Bottom.getResourceId());
             setCustomIndicator(pagerIndicator);
         }
     }
 
     public void setIndicatorPosition(int position) {
         if (pagerIndicator == null) {
-            pagerIndicator = (CircleIndicator) findViewById(IndicatorPosition.Right_Bottom.getResourceId());
+            pagerIndicator = (Circle2Indicator) findViewById(IndicatorPosition.Right_Bottom.getResourceId());
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,
                     FrameLayout.LayoutParams.WRAP_CONTENT);
             params.gravity = position;

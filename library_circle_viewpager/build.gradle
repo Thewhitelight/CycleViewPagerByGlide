@@ -5,15 +5,24 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 4
         versionName "1.0.3"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.each { output ->
+            def file = output.outputFile
+            def fileName = file.name.replace(".aar", "-" + defaultConfig.versionName + ".aar")
+            output.outputFile = new File(file.parent, fileName)
         }
     }
 }

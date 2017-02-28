@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import cn.lightsky.infiniteindicator.InfiniteIndicatorLayout;
+import cn.lightsky.infiniteindicator.indicator.CircleIndicator;
 import cn.lightsky.infiniteindicator.slideview.BaseSliderView;
 import cn.lightsky.infiniteindicator.slideview.DefaultSliderView;
 
@@ -21,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         pics = Arrays.asList("http://img.61gequ.com/allimg/2011-4/201142614314278502.jpg", "http://pic14.nipic" +
-                ".com/20110527/2531170_101932834000_2.jpg", "http://pic1.nipic.com/2008-12-25/2008122510134038_2.jpg",
+                        ".com/20110527/2531170_101932834000_2.jpg", "http://pic1.nipic" +
+                ".com/2008-12-25/2008122510134038_2.jpg",
                 "http://img1.3lian.com/2015/w7/98/d/21.jpg", "sss");
         initCircleViewPager(pics, Gravity.TOP | Gravity.RIGHT);
     }

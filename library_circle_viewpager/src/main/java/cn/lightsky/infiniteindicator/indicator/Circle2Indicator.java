@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Paint.Style;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -17,32 +17,34 @@ import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 import static android.widget.LinearLayout.HORIZONTAL;
 
 /**
- * Draws circles (one for each view). The current view position is filled and
- * others are only stroked.
- * <p/>
- * Thanks to : https://github.com/JakeWharton/Android-ViewPagerIndicator
+ * Created by Libery on 2016/12/6.
+ * Email:libery.szq@qq.com
  */
-public class CircleIndicator extends View implements PageIndicator {
+
+public class Circle2Indicator extends View implements PageIndicator {
 
     private float mRadius;
     private final Paint mPaintPageFill = new Paint(ANTI_ALIAS_FLAG);
     private final Paint mPaintStroke = new Paint(ANTI_ALIAS_FLAG);
     private final Paint mPaintFill = new Paint(ANTI_ALIAS_FLAG);
+    private final Paint mPaintNor = new Paint(ANTI_ALIAS_FLAG);
+    private final Paint mPaintSel = new Paint(ANTI_ALIAS_FLAG);
+
     private ViewPager mViewPager;
     private ViewPager.OnPageChangeListener mListener;
     private int mSnapPage;
     private int mOrientation;
     private boolean mCentered;
 
-    public CircleIndicator(Context context) {
+    public Circle2Indicator(Context context) {
         this(context, null);
     }
 
-    public CircleIndicator(Context context, AttributeSet attrs) {
+    public Circle2Indicator(Context context, AttributeSet attrs) {
         this(context, attrs, R.attr.vpiCirclePageIndicatorStyle);
     }
 
-    public CircleIndicator(Context context, AttributeSet attrs, int defStyle) {
+    public Circle2Indicator(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         if (isInEditMode()) {
             return;
@@ -62,14 +64,22 @@ public class CircleIndicator extends View implements PageIndicator {
 
         mCentered = a.getBoolean(R.styleable.CirclePageIndicator_centered, defaultCentered);
         mOrientation = a.getInt(R.styleable.CirclePageIndicator_android_orientation, defaultOrientation);
-        mPaintPageFill.setStyle(Style.FILL);
+        mPaintPageFill.setStyle(Paint.Style.STROKE);
         mPaintPageFill.setColor(a.getColor(R.styleable.CirclePageIndicator_pageColor, defaultPageColor));
-        mPaintStroke.setStyle(Style.FILL);
+        mPaintStroke.setStyle(Paint.Style.STROKE);
         mPaintStroke.setColor(a.getColor(R.styleable.CirclePageIndicator_strokeColor, defaultStrokeColor));
-        //mPaintStroke.setStrokeWidth(a.getDimension(R.styleable.CirclePageIndicator_strokeWidth, defaultStrokeWidth));
-        mPaintFill.setStyle(Style.FILL);
+        mPaintStroke.setStrokeWidth(a.getDimension(R.styleable.CirclePageIndicator_circleStrokeWidth,
+                defaultStrokeWidth));
+        mPaintFill.setStyle(Paint.Style.STROKE);
         mPaintFill.setColor(a.getColor(R.styleable.CirclePageIndicator_fillColor, defaultFillColor));
+        mPaintFill.setStrokeWidth(a.getDimension(R.styleable.CirclePageIndicator_circleStrokeWidth,
+                defaultStrokeWidth));
         mRadius = a.getDimension(R.styleable.CirclePageIndicator_radius, defaultRadius);
+
+        mPaintNor.setStyle(Paint.Style.FILL);
+        mPaintNor.setColor(Color.argb(66, 255, 255, 255));
+        mPaintSel.setStyle(Paint.Style.FILL);
+        mPaintSel.setColor(Color.argb(66, 222, 0, 50));
 
         Drawable background = a.getDrawable(R.styleable.CirclePageIndicator_android_background);
         if (background != null) {
@@ -146,7 +156,8 @@ public class CircleIndicator extends View implements PageIndicator {
             }
             // Only paint stroke if a stroke width was non-zero
             // if (pageFillRadius != mRadius) {
-                canvas.drawCircle(dX, dY, mRadius, mPaintStroke);
+            canvas.drawCircle(dX, dY, mRadius, mPaintStroke);
+            canvas.drawCircle(dX, dY, mRadius, mPaintNor);
             // }
         }
         // Draw the filled circle according to the current scroll
@@ -159,6 +170,7 @@ public class CircleIndicator extends View implements PageIndicator {
             dY = longOffset + cx;
         }
         canvas.drawCircle(dX, dY, mRadius, mPaintFill);
+        canvas.drawCircle(dX, dY, mRadius, mPaintSel);
     }
 
     @Override
